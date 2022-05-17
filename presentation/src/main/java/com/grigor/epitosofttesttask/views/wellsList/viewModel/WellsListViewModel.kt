@@ -18,7 +18,7 @@ class WellsListViewModel(private val wellsListUseCaseHelper: WellsListUseCaseHel
     private val _mainStateFlow = MutableStateFlow<WellsListState?>(null)
     val mainStateFlow get() = _mainStateFlow.asStateFlow()
 
-    init {
+   fun initChannel(){
         viewModelScope.launch(Dispatchers.IO) {
             baseIntentChannel.consumeAsFlow().collect {
                 when (it) {

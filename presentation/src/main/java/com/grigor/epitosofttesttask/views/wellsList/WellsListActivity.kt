@@ -29,12 +29,13 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
 
     override fun initViewModel() {
         super.initViewModel()
-        fetchData()
+        wellsListViewModel.initChannel()
         CoroutineScope(Dispatchers.Main).launch {
             wellsListViewModel.mainStateFlow.collect {
                 chooseState(it)
             }
         }
+        fetchData()
     }
 
     override fun <T> chooseState(state: T) {
