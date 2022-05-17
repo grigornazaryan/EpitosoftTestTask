@@ -6,6 +6,7 @@ import com.grigor.domain.entities.models.states.WellsListState
 import com.grigor.domain.exceptions.NoInternetException
 import com.grigor.domain.repository.WellsListRepository
 import com.grigor.domain.usecaseHelper.WellsListUseCaseHelper
+import kotlinx.coroutines.delay
 import java.io.IOException
 
 class WellsListUseCase(private val wellsListRepository: WellsListRepository) :
@@ -25,6 +26,7 @@ class WellsListUseCase(private val wellsListRepository: WellsListRepository) :
                 }
             }
         }catch (e:NoInternetException){
+            delay(500)
             WellsListState.Error(ExceptionConstants.NO_INTERNET)
         }
         catch (e: IOException) {

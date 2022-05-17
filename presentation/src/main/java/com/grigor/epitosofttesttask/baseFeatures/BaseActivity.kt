@@ -56,10 +56,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
     private fun dismissProgress() {
-        try {
-            progressDialog.dismiss()
-        } catch (e: Exception) {
-        }
-
+        if(progressDialog.isVisible){
+            progressDialog.dismissAllowingStateLoss()}
     }
 }
