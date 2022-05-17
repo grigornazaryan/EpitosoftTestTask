@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.grigor.epitosofttesttask.R
+import com.grigor.epitosofttesttask.views.shared.ProgressDialog
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
@@ -14,6 +15,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     private lateinit var _mBinding: VB
     private val mBinding get() = _mBinding
+    private val progressDialog by lazy { ProgressDialog() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,21 +33,33 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     protected abstract fun initViews()
     protected open fun initViewModel() {}
-    protected open fun <T> chooseState(state: T) {}
+    protected open fun <T> chooseState(state: T) {
+        dismissProgress()
+    }
 
 
     protected open fun onError(message: String?, retry: () -> Unit) {
-        if (message != null) {
-            Snackbar.make(mBinding.root, message, Snackbar.LENGTH_INDEFINITE).apply {
+        dismissProgress()
+        Snackbar.make(mBinding.root, message?:"", Snackbar.LENGTH_INDEFINITE).apply {
                 setActionTextColor(Color.WHITE)
                 setAction(R.string.retry) { retry.invoke() }
                 dismiss()
                 show()
-            }
+
         }
     }
 
     protected open fun onLoading() {
+        if (!progressDialog.isVisible) {
+            progressDialog.show(supportFragmentManager, null)
+        }
+    }
+
+    private fun dismissProgress() {
+        try {
+            progressDialog.dismiss()
+        } catch (e: Exception) {
+        }
 
     }
 }

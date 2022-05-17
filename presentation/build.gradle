@@ -41,7 +41,9 @@ dependencies {
     testImplementation defaultDependencies.junitTest
     androidTestImplementation defaultDependencies.androidJunitTest
     androidTestImplementation  defaultDependencies.androidEspresso
+    implementation defaultDependencies.dimens
     implementation diDependences.koin
     implementation networkDependences.gson
     implementation coroutinesAndFlows.coroutines
+
 }

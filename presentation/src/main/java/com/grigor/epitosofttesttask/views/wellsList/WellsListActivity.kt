@@ -41,14 +41,16 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
             is WellsListState.WellsList -> {
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             }
-            is WellsListState.IsLoading -> {}
+            is WellsListState.IsLoading -> {
+                onLoading()
+            }
             is WellsListState.Error -> {
                 onError(state.message) {
                     fetchData()
                 }
             }
             else -> {
-                throw IllegalStateException()
+                return
             }
         }
     }
