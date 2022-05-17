@@ -1,13 +1,13 @@
 package com.grigor.epitosofttesttask.views.wellsList
 
 import android.view.LayoutInflater
-import androidx.lifecycle.lifecycleScope
 import com.grigor.domain.entities.models.states.WellsListState
 import com.grigor.domain.entities.models.wellsListIntent.WellsListIntent
 import com.grigor.epitosofttesttask.baseFeatures.BaseActivity
 import com.grigor.epitosofttesttask.databinding.ActivityWellsListBinding
 import com.grigor.epitosofttesttask.views.wellsList.adapters.WellsListAdapter
 import com.grigor.epitosofttesttask.views.wellsList.viewModel.WellsListViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -30,7 +30,7 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
     override fun initViewModel() {
         super.initViewModel()
         fetchData()
-        lifecycleScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.Main).launch {
             wellsListViewModel.mainStateFlow.collect {
                 chooseState(it)
             }
@@ -59,7 +59,7 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
     }
 
     private fun fetchData() {
-        lifecycleScope.launch(Dispatchers.IO) {
+        CoroutineScope(Dispatchers.IO).launch {
             wellsListViewModel.baseIntentChannel.send(WellsListIntent.FetchUser)
         }
     }

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.grigor.epitosofttesttask">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EpitosoftTestTask"
-        tools:targetApi="31">
+        tools:targetApi="32">
+        <activity
+            android:name=".views.wellsDetails.WellsDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".views.wellsList.WellsListActivity"
             android:exported="true"
