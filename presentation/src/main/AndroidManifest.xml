@@ -17,12 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EpitosoftTestTask"
         tools:targetApi="32">
-        <activity
-            android:name=".views.wellsDetails.WellsDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.wellsList.WellsListActivity"
-            android:exported="false" />
+
         <activity
             android:name=".views.splash.SplashActivity"
             android:exported="true"
@@ -34,6 +29,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".views.wellsDetails.WellsDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".views.wellsList.WellsListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            />
     </application>
 
 </manifest>

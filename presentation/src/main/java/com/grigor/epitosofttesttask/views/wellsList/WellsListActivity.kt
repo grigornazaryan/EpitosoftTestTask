@@ -1,10 +1,13 @@
 package com.grigor.epitosofttesttask.views.wellsList
 
 import android.view.LayoutInflater
+import com.grigor.domain.entities.constants.BundleConstants
 import com.grigor.domain.entities.models.states.WellsListState
 import com.grigor.domain.entities.models.wellsListIntent.WellsListIntent
 import com.grigor.epitosofttesttask.baseFeatures.BaseActivity
 import com.grigor.epitosofttesttask.databinding.ActivityWellsListBinding
+import com.grigor.epitosofttesttask.extencions.launchActivity
+import com.grigor.epitosofttesttask.views.wellsDetails.WellsDetailsActivity
 import com.grigor.epitosofttesttask.views.wellsList.adapters.WellsListAdapter
 import com.grigor.epitosofttesttask.views.wellsList.viewModel.WellsListViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +27,11 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
     private val wellsListViewModel by viewModel<WellsListViewModel>()
 
     override fun initViews() {
-        mBinding.wellsList.adapter = WellsListAdapter().also { wellsAdapter = it }
+        mBinding.wellsList.adapter = WellsListAdapter {model->
+            launchActivity<WellsDetailsActivity>(false) {
+                it.putExtra(BundleConstants.MODEL_TO_DETAILS_ACTIVITY,model)
+            }
+        }.also { wellsAdapter = it }
     }
 
     override fun initViewModel() {

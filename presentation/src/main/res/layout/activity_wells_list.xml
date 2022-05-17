@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.wellsList.WellsListActivity"
-        android:background="@color/teal_700">
+        android:background="@color/teal_700"
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/wellsList"
@@ -22,9 +23,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_12mdp"
+            android:layout_marginTop="@dimen/_15mdp"
             android:overScrollMode="never"
-           />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,7 +9,8 @@ import com.grigor.domain.entities.models.dataModels.WellSitesDataModel
 import com.grigor.epitosofttesttask.R
 import com.grigor.epitosofttesttask.databinding.WellsListItemBinding
 
-class WellsListAdapter : RecyclerView.Adapter<WellsListAdapter.WellsListViewHolder>() {
+class WellsListAdapter(private val itemClicked: (WellSitesDataModel) -> Unit) :
+    RecyclerView.Adapter<WellsListAdapter.WellsListViewHolder>() {
 
     private val dataList = ArrayList<WellSitesDataModel>()
 
@@ -17,6 +18,7 @@ class WellsListAdapter : RecyclerView.Adapter<WellsListAdapter.WellsListViewHold
         RecyclerView.ViewHolder(mBinding.root) {
         fun bind(model: WellSitesDataModel) {
             mBinding.companyName = model.name ?: ""
+            mBinding.root.setOnClickListener { itemClicked.invoke(model) }
         }
     }
 
