@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/EpitosoftTestTask/presentation/src/main/res/layout/activity_main.xml" value="0.15217391304347827" />
+        <entry key="..\:/EpitosoftTestTask/presentation/src/main/res/layout/activity_wells_list.xml" value="0.19880290722530997" />
         <entry key="..\:/EpitosoftTestTask/presentation/src/main/res/layout/dialog_progress.xml" value="0.22826086956521738" />
+        <entry key="..\:/EpitosoftTestTask/presentation/src/main/res/layout/wells_list_item.xml" value="0.15217391304347827" />
       </map>
     </option>
   </component>

@@ -14,7 +14,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected abstract val inflater: (LayoutInflater) -> VB
 
     private lateinit var _mBinding: VB
-    private val mBinding get() = _mBinding
+    val mBinding get() = _mBinding
     private val progressDialog by lazy { ProgressDialog() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +40,11 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     protected open fun onError(message: String?, retry: () -> Unit) {
         dismissProgress()
-        Snackbar.make(mBinding.root, message?:"", Snackbar.LENGTH_INDEFINITE).apply {
-                setActionTextColor(Color.WHITE)
-                setAction(R.string.retry) { retry.invoke() }
-                dismiss()
-                show()
+        Snackbar.make(mBinding.root, message ?: "", Snackbar.LENGTH_INDEFINITE).apply {
+            setActionTextColor(Color.WHITE)
+            setAction(R.string.retry) { retry.invoke() }
+            dismiss()
+            show()
 
         }
     }
@@ -56,7 +56,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
     private fun dismissProgress() {
-        if(progressDialog.isVisible){
-            progressDialog.dismissAllowingStateLoss()}
+        if (progressDialog.isVisible) {
+            progressDialog.dismissAllowingStateLoss()
+        }
     }
 }

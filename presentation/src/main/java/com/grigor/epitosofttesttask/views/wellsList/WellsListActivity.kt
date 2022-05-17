@@ -1,12 +1,12 @@
 package com.grigor.epitosofttesttask.views.wellsList
 
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.grigor.domain.entities.models.states.WellsListState
 import com.grigor.domain.entities.models.wellsListIntent.WellsListIntent
 import com.grigor.epitosofttesttask.baseFeatures.BaseActivity
 import com.grigor.epitosofttesttask.databinding.ActivityWellsListBinding
+import com.grigor.epitosofttesttask.views.wellsList.adapters.WellsListAdapter
 import com.grigor.epitosofttesttask.views.wellsList.viewModel.WellsListViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -19,10 +19,12 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
     override val inflater: (LayoutInflater) -> ActivityWellsListBinding
         get() = ActivityWellsListBinding::inflate
 
+    private var wellsAdapter: WellsListAdapter? = null
+
     private val wellsListViewModel by viewModel<WellsListViewModel>()
 
     override fun initViews() {
-
+        mBinding.wellsList.adapter = WellsListAdapter().also { wellsAdapter = it }
     }
 
     override fun initViewModel() {
@@ -39,7 +41,8 @@ class WellsListActivity : BaseActivity<ActivityWellsListBinding>() {
         super.chooseState(state)
         when (state) {
             is WellsListState.WellsList -> {
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                wellsAdapter?.setData(state.dataList)
+
             }
             is WellsListState.IsLoading -> {
                 onLoading()
