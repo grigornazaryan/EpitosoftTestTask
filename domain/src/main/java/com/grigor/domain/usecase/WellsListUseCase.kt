@@ -7,7 +7,6 @@ import com.grigor.domain.exceptions.NoInternetException
 import com.grigor.domain.repository.WellsListRepository
 import com.grigor.domain.usecaseHelper.WellsListUseCaseHelper
 import kotlinx.coroutines.delay
-import java.io.IOException
 
 class WellsListUseCase(private val wellsListRepository: WellsListRepository) :
     WellsListUseCaseHelper {
@@ -29,7 +28,8 @@ class WellsListUseCase(private val wellsListRepository: WellsListRepository) :
             delay(500)
             WellsListState.Error(ExceptionConstants.NO_INTERNET)
         }
-        catch (e: IOException) {
+        catch (e: Exception) {
+            delay(500)
             WellsListState.Error(ExceptionConstants.SOMETHING_WENT_WRONG)
         }
     }

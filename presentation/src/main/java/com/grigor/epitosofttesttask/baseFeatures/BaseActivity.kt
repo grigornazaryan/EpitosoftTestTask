@@ -48,15 +48,17 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         dismissProgress()
         Snackbar.make(mBinding.root, message ?: "", Snackbar.LENGTH_INDEFINITE).apply {
             setActionTextColor(Color.WHITE)
-            setAction(R.string.retry) { retry.invoke() }
-            dismiss()
+            setAction(R.string.retry) {
+                dismiss()
+                retry.invoke()
+            }
             show()
 
         }
     }
 
     protected open fun onLoading() {
-        if (!progressDialog.isVisible&&!supportFragmentManager.isDestroyed) {
+        if (!progressDialog.isVisible && !supportFragmentManager.isDestroyed) {
             progressDialog.show(supportFragmentManager, Tags.PROGRESS_TAG)
         }
     }
@@ -67,6 +69,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.hold_anim,R.anim.slide_out_right)
+        overridePendingTransition(R.anim.hold_anim, R.anim.slide_out_right)
     }
 }
