@@ -25,7 +25,8 @@ ext {
             junitTest       : 'junit:junit:4.13.2',
             androidJunitTest: 'androidx.test.ext:junit:1.1.3',
             androidEspresso : 'androidx.test.espresso:espresso-core:3.4.0',
-            dimens:'com.github.grigornazaryan:Grigor_Dimens:2.0'
+            dimens:'com.github.grigornazaryan:Grigor_Dimens:2.0',
+            geoHash:"ch.hsr:geohash:1.4.0"
     ]
     networkDependences=[
             retrofit: 'com.squareup.retrofit2:retrofit:2.9.0',

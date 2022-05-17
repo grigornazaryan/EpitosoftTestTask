@@ -25,6 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/_15mdp"
             android:overScrollMode="never"
+            tools:listitem="@layout/wells_list_item"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
