@@ -12,7 +12,8 @@ class ProgressDialog : BaseDialog<DialogProgressBinding>() {
         get() = DialogProgressBinding::inflate
 
     override fun initViews() {
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.apply { setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        setDimAmount(0f)}
         isCancelable = false
     }
 }
